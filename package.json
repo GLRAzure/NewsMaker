@@ -1,0 +1,16 @@
+{
+  "name": "news-maker",
+  "version": "1.0.0",
+  "description": "API for interfacing with NewsMaker backend",
+  "main": "index.js",
+  "keywords": [
+    "swagger"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "connect": "^3.2.0",
+    "js-yaml": "^3.3.0",
+    "swagger-tools": "0.9.*"
+  }
+}
