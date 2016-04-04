@@ -12,7 +12,7 @@ info:
   license:
     name: "MIT"
     url: "http://opensource.org/licenses/MIT"
-host: "newsmaker.azurewebsite.net"
+host: "newsmaker.azurewebsites.net"
 basePath: "/api"
 schemes:
 - "http"
