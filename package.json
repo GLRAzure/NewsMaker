@@ -1,7 +1,7 @@
 {
   "name": "news-maker",
   "version": "1.0.0",
-  "description": "API for interfacing with NewsMaker backend",
+  "description": "API for interfacing with NewsMaker service",
   "main": "server.js",
   "keywords": [
     "swagger"

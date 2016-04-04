@@ -1,17 +1,16 @@
 'use strict';
 
-exports.addPet = function(args, res, next) {
+exports.addCat = function(args, res, next) {
   /**
    * parameters expected in the args:
-  * post (NewPost)
+  * cat (Cat)
   **/
   
   
   var examples = {};
   examples['application/json'] = {
-  "name" : "aeiou",
-  "id" : 123456789,
-  "tag" : "aeiou"
+  "catName" : "aeiou",
+  "id" : "aeiou"
 };
   
   if(Object.keys(examples).length > 0) {
@@ -25,6 +24,88 @@ exports.addPet = function(args, res, next) {
   
 }
 
+exports.addFeed = function(args, res, next) {
+  /**
+   * parameters expected in the args:
+  * feed (Feed)
+  **/
+  
+  
+  var examples = {};
+  examples['application/json'] = {
+  "catID" : "aeiou",
+  "feedURL" : "aeiou",
+  "feedName" : "aeiou",
+  "feedSite" : "aeiou",
+  "id" : "aeiou"
+};
+  
+  if(Object.keys(examples).length > 0) {
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));
+  }
+  else {
+    res.end();
+  }
+  
+  
+}
+
+exports.addPost = function(args, res, next) {
+  /**
+   * parameters expected in the args:
+  * post (Post)
+  **/
+  
+  
+  var examples = {};
+  examples['application/json'] = {
+  "summary" : "aeiou",
+  "date" : "aeiou",
+  "unixtime" : 123456789,
+  "catID" : "aeiou",
+  "feedID" : "aeiou",
+  "feedName" : "aeiou",
+  "author" : "aeiou",
+  "link" : "aeiou",
+  "id" : 123456789,
+  "categories" : [ "aeiou" ],
+  "title" : "aeiou"
+};
+  
+  if(Object.keys(examples).length > 0) {
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));
+  }
+  else {
+    res.end();
+  }
+  
+  
+}
+
+exports.deleteCat = function(args, res, next) {
+  /**
+   * parameters expected in the args:
+  * id (String)
+  **/
+  // no response value expected for this operation
+  
+  
+  res.end();
+}
+
+exports.deleteFeed = function(args, res, next) {
+  /**
+   * parameters expected in the args:
+  * id (String)
+  **/
+  // no response value expected for this operation
+  
+  
+  res.end();
+}
+
 exports.deletePost = function(args, res, next) {
   /**
    * parameters expected in the args:
@@ -36,19 +117,47 @@ exports.deletePost = function(args, res, next) {
   res.end();
 }
 
-exports.findPetById = function(args, res, next) {
+exports.findCats = function(args, res, next) {
   /**
    * parameters expected in the args:
-  * id (Long)
+  * query (List)
+  * limit (Integer)
   **/
   
   
   var examples = {};
-  examples['application/json'] = {
-  "name" : "aeiou",
-  "id" : 123456789,
-  "tag" : "aeiou"
-};
+  examples['application/json'] = [ {
+  "catName" : "aeiou",
+  "id" : "aeiou"
+} ];
+  
+  if(Object.keys(examples).length > 0) {
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));
+  }
+  else {
+    res.end();
+  }
+  
+  
+}
+
+exports.findFeeds = function(args, res, next) {
+  /**
+   * parameters expected in the args:
+  * query (List)
+  * limit (Integer)
+  **/
+  
+  
+  var examples = {};
+  examples['application/json'] = [ {
+  "catID" : "aeiou",
+  "feedURL" : "aeiou",
+  "feedName" : "aeiou",
+  "feedSite" : "aeiou",
+  "id" : "aeiou"
+} ];
   
   if(Object.keys(examples).length > 0) {
     res.setHeader('Content-Type', 'application/json');
@@ -64,17 +173,109 @@ exports.findPetById = function(args, res, next) {
 exports.findPosts = function(args, res, next) {
   /**
    * parameters expected in the args:
-  * tags (List)
+  * query (List)
   * limit (Integer)
   **/
   
   
   var examples = {};
   examples['application/json'] = [ {
-  "name" : "aeiou",
+  "summary" : "aeiou",
+  "date" : "aeiou",
+  "unixtime" : 123456789,
+  "catID" : "aeiou",
+  "feedID" : "aeiou",
+  "feedName" : "aeiou",
+  "author" : "aeiou",
+  "link" : "aeiou",
   "id" : 123456789,
-  "tag" : "aeiou"
+  "categories" : [ "aeiou" ],
+  "title" : "aeiou"
 } ];
+  
+  if(Object.keys(examples).length > 0) {
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));
+  }
+  else {
+    res.end();
+  }
+  
+  
+}
+
+exports.getCatByID = function(args, res, next) {
+  /**
+   * parameters expected in the args:
+  * id (String)
+  **/
+  
+  
+  var examples = {};
+  examples['application/json'] = {
+  "catName" : "aeiou",
+  "id" : "aeiou"
+};
+  
+  if(Object.keys(examples).length > 0) {
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));
+  }
+  else {
+    res.end();
+  }
+  
+  
+}
+
+exports.getFeedByID = function(args, res, next) {
+  /**
+   * parameters expected in the args:
+  * id (String)
+  **/
+  
+  
+  var examples = {};
+  examples['application/json'] = {
+  "catID" : "aeiou",
+  "feedURL" : "aeiou",
+  "feedName" : "aeiou",
+  "feedSite" : "aeiou",
+  "id" : "aeiou"
+};
+  
+  if(Object.keys(examples).length > 0) {
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));
+  }
+  else {
+    res.end();
+  }
+  
+  
+}
+
+exports.getPostByID = function(args, res, next) {
+  /**
+   * parameters expected in the args:
+  * id (Long)
+  **/
+  
+  
+  var examples = {};
+  examples['application/json'] = {
+  "summary" : "aeiou",
+  "date" : "aeiou",
+  "unixtime" : 123456789,
+  "catID" : "aeiou",
+  "feedID" : "aeiou",
+  "feedName" : "aeiou",
+  "author" : "aeiou",
+  "link" : "aeiou",
+  "id" : 123456789,
+  "categories" : [ "aeiou" ],
+  "title" : "aeiou"
+};
   
   if(Object.keys(examples).length > 0) {
     res.setHeader('Content-Type', 'application/json');
