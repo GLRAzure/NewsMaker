@@ -56,7 +56,7 @@ paths:
           description: "unexpected error"
           schema:
             $ref: "#/definitions/errorModel"
-      x-swagger-router-controller: "Default"
+      x-swagger-router-controller: "cats"
     post:
       description: "Creates a new cat."
       operationId: "addCat"
@@ -78,7 +78,7 @@ paths:
           description: "unexpected error"
           schema:
             $ref: "#/definitions/errorModel"
-      x-swagger-router-controller: "Default"
+      x-swagger-router-controller: "cats"
   /cats/{id}:
     get:
       description: "Returns a cat based on a single ID, if the user does not have\
@@ -104,7 +104,7 @@ paths:
           description: "unexpected error"
           schema:
             $ref: "#/definitions/errorModel"
-      x-swagger-router-controller: "Default"
+      x-swagger-router-controller: "cats"
     delete:
       description: "deletes a single cat based on the ID supplied"
       operationId: "deleteCat"
@@ -121,7 +121,7 @@ paths:
           description: "unexpected error"
           schema:
             $ref: "#/definitions/errorModel"
-      x-swagger-router-controller: "Default"
+      x-swagger-router-controller: "cats"
   /feeds:
     get:
       description: "Returns all feeds from the system that the user has access to"
