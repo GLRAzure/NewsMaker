@@ -50,7 +50,7 @@ function queryPosts(callback, order, filter) {
     queryByType('post', callback, order, filter);
 }
 
-function GeneratePostID(URL) {
+function generatePostID(URL) {
     return md5(URL);
 }
 
@@ -175,7 +175,7 @@ function upsertPosts(posts, callback)
     async.eachSeries(posts, function(post, postcallback) {
         if (post.link != null) {
             var insobject = {
-                id: GeneratePostID(post.link),
+                id: generatePostID(post.link),
                 type: 'post',
                 title: post.title,
                 //description: post.description,
@@ -188,6 +188,41 @@ function upsertPosts(posts, callback)
                 feedName: post.feedName,
                 catID: post.catID,
                 unixtime: moment(post.date).unix()
+            }
+
+            if (insobject.id != null && insobject.unixtime > cutofftime) {
+                //console.log(posts[i].feedName + ": "+ posts[i].catID +": " +posts[i].id);
+                upsertItem(insobject, function(err, item) {
+                    if(err) {
+                        //do something if error
+                    }
+                });   
+            }
+        }
+        postcallback();       
+    }, function(err){
+        //all done
+        callback(err);
+    });
+}
+
+function generateFeedID(URL) {
+    return md5(URL);
+}
+
+function upsertFeeds(feeds, callback)
+{
+    var cutofftime = moment().subtract(config.historydays, 'days').unix();
+    
+    async.eachSeries(feeds, function(feed, postcallback) {
+        if (feed.feedURL != null) {
+            var insobject = {
+                type: 'feed',
+                id: generateFeedID(post.link),
+                catID: feed.catID,
+                feedName: feed.feedName,
+                feedSite: feed.feedSite,
+                feedURL: feed.feedURL
             }
 
             if (insobject.id != null && insobject.unixtime > cutofftime) {
@@ -219,7 +254,7 @@ module.exports = {
     queryCats: queryCats,
     queryFeeds: queryFeeds,
     queryPosts: queryPosts,
-    GeneratePostID: GeneratePostID,
+    generatePostID: generatePostID,
     retrievePosts: retrievePosts,
     upsertItem: upsertItem,
     refreshPosts: refreshAllPosts,

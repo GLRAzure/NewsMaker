@@ -26,7 +26,6 @@ module.exports.getPostByID = function getPostByID (req, res, next) {
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(_.pick(documents[0], ["id","title", "summary", "date", "author", "link", "categories", "feedID", "feedName", "catID", "unixtime"])));
   }, "" , {"id": req.swagger.params.id.value});
-  //Default.getPostByID(req.swagger.params, res, next);
 };
 
 module.exports.deletePost = function deletePost (req, res, next) {
