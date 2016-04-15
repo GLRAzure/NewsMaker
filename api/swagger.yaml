@@ -7,12 +7,12 @@ info:
   termsOfService: "http://newsmaker.azurewebsites.net/terms/"
   contact:
     name: "NewsMaker Team"
-    url: "http://newsmaker.azurewebsite.net"
+    url: "http://newsmaker.azurewebsites.net"
     email: "newsmaker@microsoft.com"
   license:
     name: "MIT"
     url: "http://opensource.org/licenses/MIT"
-host: "newsmaker.azurewebsite.net"
+host: "newsmaker.azurewebsites.net"
 basePath: "/api"
 schemes:
 - "http"
