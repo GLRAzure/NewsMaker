@@ -34,8 +34,8 @@ module.exports.deletePost = function deletePost (req, res, next) {
 
 module.exports.refreshPosts = function refreshPosts (req, res, next) {
   newsmaker.refreshPosts(function(next){
-    res.end('Post Refresh Complete');
     next;
   });
+  res.end('Post Refresh Kicked Off');
   //Default.refreshPosts(req.swagger.params, res, next);
 };
