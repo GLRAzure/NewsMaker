@@ -26,7 +26,9 @@ function queryByType(type, callback, order, filter) {
         }
     }
     
-    //console.log(querystring);
+    console.log("DocDB Info:");
+    console.log(config);
+    console.log(querystring);
     ddbClient.queryDocuments(config.collectionsLink, querystring).toArray(function(err, documents) { 
         if (!err) {
             if (_.isObject(order)) documents = _.sortByOrder(documents, _.keys(order), _.values(order))
